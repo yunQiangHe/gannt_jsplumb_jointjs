@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./jquery.pageslide.css"> -->
+    <style>
+        #pageslide {
+            /* These styles MUST be included. Do not change. */
+            display: none;
+            position: absolute;
+            position: fixed;
+            top: 0;
+            height: 100%;
+            z-index: 999999;
+            /* Specify the width of your pageslide here */
+            width: 260px;
+            padding: 20px;
+            /* These styles are optional, and describe how the pageslide will look */
+            background-color: #333;
+            color: #FFF;
+            -webkit-box-shadow: inset 0 0 5px 5px #222;
+            -moz-shadow: inset 0 0 5px 5px #222;
+            box-shadow: inset 0 0 5px 5px #222;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="#modal" class="second">
+        Slide to the left, and display hidden content from this page in a modal pane.
+    </a>
+    <p>大声点</p>
+
+    <div id="modal" style="display: none;">
+
+        <h2>Modal</h2>
+
+        <p>This slide uses "modal" option set to "true". When using a modal pageslide, clicking on the main window will not close the window. You must explicitly call <code>$.pageslide.close()</code>.</p>
+
+        <p><a href="javascript:$.pageslide.close()">Close</a></p>
+
+    </div>
+
+
+</body>
+
+</html>
+<script src="./lib/jquery-1.7.1.min.js"></script>
+<script src="./jquery.pageslide.min.js"></script>
+<script>
+    $(".second").pageslide({
+        direction: "left",
+        modal: true
+    });
+</script>
