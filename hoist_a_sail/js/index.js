@@ -2,7 +2,7 @@
  * @Author: heyunqiang 
  * @Date: 2020-05-09 22:53:39 
  * @Last Modified by: yunqinagHe
- * @Last Modified time: 2020-05-10 10:57:24
+ * @Last Modified time: 2020-05-10 23:59:29
  */
 
 
@@ -44,8 +44,50 @@ window.onload = function() {
         }]
     });
 
-    $(".second").pageslide({
-        direction: "left",
-        modal: true
+    // let temp = [
+    //     { source: 1, target: 2 },
+    //     { source: 1, target: 3 }
+    // ];
+
+    // for (let i = 0; i < temp.length; i++) {
+    //     jsPlumb.connect({
+    //         source: $(".gantt_task_row[task_id=" + temp[i].source + "]")[0],
+    //         target: $(".gantt_task_row[task_id=" + temp[i].target + "]")[0],
+    //         endpoint: 'Dot'
+    //     });
+    // }
+
+    jsPlumb.connect({
+        source: $(".gantt_task_row[task_id=1]")[0],
+        target: $(".gantt_task_row[task_id=2]")[0],
+        endpoint: 'Rectangle',
+        connector: ['Flowchart'],
+        overlays: [
+            ['Arrow', {
+                width: 10,
+                length: 10,
+                location: 1
+            }],
+            ['Label', {
+                label: '<button class="delete-node-btn">X</button>',
+                cssClass: '',
+                labelStyle: {
+                    color: 'red'
+                },
+                events: {
+                    click: function(labelOverlay, originalEvent) {
+                        console.log('click on label overlay for :' + labelOverlay.component)
+                        console.log(labelOverlay)
+                        console.log(originalEvent)
+                    }
+                }
+            }]
+        ]
     });
+
+    $("#del").click(function() {
+        console.log("jsPlumb.deleteEveryConnection()");
+        jsPlumb.deleteEveryConnection()
+    })
+
 }

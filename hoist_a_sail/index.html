@@ -7,13 +7,9 @@
     <title>升帆</title>
     <link rel="stylesheet" href="./codebase/dhtmlxgantt.css">
     <link rel="stylesheet" href="./css/index.css">
-
     <script src="./codebase/dhtmlxgantt.js"></script>
-    <script src="./js/jquery-1.7.1.min.js"></script>
-    <script src="./js/jquery.pageslide.min.js"></script>
-
-    <script src="./js/index.js"></script>
-
+    <script src="./js/jquery-1.11.0.min.js"></script>
+    <script src="./js/jsplumb.min.js"></script>
 </head>
 
 <body>
@@ -21,20 +17,13 @@
         <h1>Gannt</h1>
     </header>
 
-    <a href="#modal" class="second">
-        Slide to the left, and display hidden content from this page in a modal pane.
-    </a>
+    <button id="del">btn</button>
 
     <section class="gantt_section">
-        <div id="gantt_here" style='width:80%; height:60%;'></div>
+        <div id="gantt_here" style='width:100%; height:100%;'></div>
     </section>
-
-    <div id="modal" style="display:none">
-        <h2>Modal</h2>
-        <p>This slide uses "modal" option set to "true". When using a modal pageslide, clicking on the main window will not close the window. You must explicitly call <code>$.pageslide.close()</code>.</p>
-        <p><a href="javascript:$.pageslide.close()">Close</a></p>
-    </div>
 
 </body>
 
 </html>
+<script src="./js/index.js"></script>
