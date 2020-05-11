@@ -2,7 +2,7 @@
  * @Author: heyunqiang 
  * @Date: 2020-05-09 22:53:39 
  * @Last Modified by: yunqinagHe
- * @Last Modified time: 2020-05-10 23:59:29
+ * @Last Modified time: 2020-05-11 12:12:25
  */
 
 
@@ -27,6 +27,13 @@ window.onload = function() {
             id: 3,
             text: "Task #2",
             start_date: "11-04-2018",
+            duration: 8,
+            progress: 0.6,
+            parent: 1
+        }, {
+            id: 4,
+            text: "Task #2",
+            start_date: "12-04-2018",
             duration: 8,
             progress: 0.6,
             parent: 1
@@ -58,22 +65,61 @@ window.onload = function() {
     // }
 
     jsPlumb.connect({
-        source: $(".gantt_task_row[task_id=1]")[0],
-        target: $(".gantt_task_row[task_id=2]")[0],
-        endpoint: 'Rectangle',
+        source: $(".gantt_bar_task[task_id=1]"),
+        target: $(".gantt_bar_task[task_id=3]"),
+        endpoint: 'Blank',
         connector: ['Flowchart'],
+        anchors: [
+            "Right", "Right"
+        ],
         overlays: [
             ['Arrow', {
                 width: 10,
                 length: 10,
                 location: 1
             }],
+            ['Arrow', {
+                width: 10,
+                length: 10,
+                location: 0,
+                direction: -1
+            }],
             ['Label', {
-                label: '<button class="delete-node-btn">X</button>',
+                label: '<button class="btn">冗余</button>',
                 cssClass: '',
-                labelStyle: {
-                    color: 'red'
-                },
+                labelStyle: {},
+                events: {
+                    click: function(labelOverlay, originalEvent) {
+                        console.log('click on label overlay for :' + labelOverlay.component)
+                        console.log(labelOverlay)
+                        console.log(originalEvent)
+                    }
+                }
+            }]
+        ]
+    });
+    jsPlumb.connect({
+        source: $(".gantt_bar_task[task_id=2]"),
+        target: $(".gantt_bar_task[task_id=4]"),
+        endpoint: 'Blank',
+        connector: ['Flowchart'],
+        anchors: [
+            "Right", "Right"
+        ],
+        overlays: [
+            ['Arrow', {
+                width: 10,
+                length: 10,
+                location: 1
+            }],
+            ['Arrow', {
+                width: 10,
+                length: 10,
+                location: 0,
+                direction: -1
+            }],
+            ['Label', {
+                label: '<button class="btn">冲突</button>',
                 events: {
                     click: function(labelOverlay, originalEvent) {
                         console.log('click on label overlay for :' + labelOverlay.component)

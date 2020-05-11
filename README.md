@@ -2,6 +2,7 @@
 
 ### jsplumb(jsPlumb最后一个兼容IE8的版本为1.7.x)
 - jsPlumb.connect用于建立连线
+- 全局则可以使用jsPlumb.importDefaults({···})
 - Souce 源节点
 ```
 静态锚点
